@@ -25,6 +25,9 @@
 
     html { scroll-behavior: smooth; }
 
+    /* offset for sticky nav on all anchor targets */
+    [id] { scroll-margin-top: 92px; }
+
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--sand);
@@ -910,6 +913,7 @@
   <hr class="rule" />
 
   <!-- QUICK ACCESS -->
+  <span id="hoa" style="display:block;"></span>
   <section class="quick-access" id="resources" aria-labelledby="qa-heading">
     <div class="quick-access-header">
       <div>
@@ -937,7 +941,7 @@
         <p class="card-desc">Meetings, cleanups and community gatherings.</p>
         <span class="card-arrow">See calendar &#8594;</span>
       </a>
-      <a class="quick-card" href="#hoa" id="hoa">
+      <a class="quick-card" href="#hoa">
         <span class="card-num">04</span>
         <p class="card-title">HOA &amp; Board</p>
         <p class="card-desc">Governance, contacts and association information.</p>
