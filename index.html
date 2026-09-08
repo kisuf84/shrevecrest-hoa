@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shrevecrest -- Falls Church, Virginia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:    #173c32;
+      --forest-mid:#244c40;
+      --sand:      #f4f0e7;
+      --cream:     #fbf9f4;
+      --clay:      #7b3f46;
+      --stone:     #6a716b;
+      --ink:       #202522;
+      --rule:      #d8d5cc;
+      --sage-lt:   #d9dfd5;
+      --sage-ph:   #a8b5a3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--sand);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--sand);
+      border-bottom: 1px solid var(--rule);
+      height: 92px;
+      display: flex;
+      align-items: center;
+      padding: 0 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      color: var(--forest);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--forest); }
+
+    .nav-pill {
+      margin-left: 48px;
+      background: var(--forest);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0 28px;
+      height: 38px;
+      border-radius: 19px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-pill:hover { background: var(--forest-mid); }
+
+    /* ---- HERO ---- */
+    .hero {
+      display: grid;
+      grid-template-columns: 590px 1fr;
+      min-height: 820px;
+    }
+
+    .hero-copy {
+      background: var(--cream);
+      padding: 66px 64px 60px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--clay);
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(52px, 5.3vw, 76px);
+      font-weight: 400;
+      line-height: 0.98;
+      color: var(--forest);
+      margin-bottom: 48px;
+    }
+
+    .hero-body {
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      text-decoration: none;
+      border-bottom: 1px solid var(--forest);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .text-link:hover { opacity: 0.7; }
+
+    .hero-stats {
+      display: flex;
+      gap: 56px;
+      margin-top: auto;
+      padding-top: 48px;
+    }
+
+    .stat {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+    }
+
+    .hero-photo {
+      background: #c2cdc0;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 204px;
+      grid-template-rows: 1fr 354px;
+      gap: 12px;
+      padding: 46px;
+    }
+
+    .hero-photo-main {
+      grid-row: 1 / 3;
+      background: var(--sage-ph);
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-end;
+      padding: 32px;
+    }
+
+    .hero-photo-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .hero-photo-top-right { background: #8ea095; border-radius: 4px; }
+    .hero-photo-bot-right { background: #b9a990; border-radius: 4px; }
+
+    /* ---- SHARED SECTION ---- */
+    section { padding: 100px 64px; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--clay);
+      margin-bottom: 40px;
+    }
+
+    .section-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.02;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 64px;
+    }
+
+    /* ---- COMMUNITY ---- */
+    .community {
+      background: var(--sand);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 80px;
+    }
+
+    .community .section-headline { font-size: clamp(40px, 4.2vw, 60px); }
+
+    .community-body {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink);
+      padding-top: 8px;
+    }
+
+    .community-body strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ---- LIFESTYLE ---- */
+    .lifestyle {
+      background: var(--sand);
+      padding: 80px 64px;
+      display: grid;
+      grid-template-columns: 760px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .lifestyle-photo {
+      background: #c2cdc0;
+      border-radius: 6px;
+      height: 720px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lifestyle-photo-inner {
+      position: absolute;
+      inset: 44px;
+      background: var(--sage-ph);
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-end;
+      padding: 32px;
+    }
+
+    .lifestyle-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--forest);
+      margin-bottom: 24px;
+    }
+
+    .lifestyle-body {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 390px;
+      margin-bottom: 48px;
+    }
+
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .amenity {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ---- QUICK ACCESS ---- */
+    .quick-access { background: var(--sand); padding: 100px 64px; }
+
+    .quick-access-header {
+      display: grid;
+      grid-template-columns: 650px 1fr;
+      gap: 80px;
+      margin-bottom: 64px;
+      align-items: start;
+    }
+
+    .quick-access .section-headline { font-size: clamp(38px, 3.8vw, 54px); }
+
+    .quick-access-desc {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink);
+      padding-top: 10px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .quick-card {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      padding: 24px 22px 28px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      min-height: 240px;
+    }
+
+    .quick-card:hover {
+      border-color: var(--stone);
+      box-shadow: 0 4px 16px rgba(23,60,50,.06);
+    }
+
+    .card-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--stone);
+      letter-spacing: 0.08em;
+      margin-bottom: 36px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--stone);
+      flex: 1;
+    }
+
+    .card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-top: 28px;
+    }
+
+    /* ---- COMMUNITY UPDATES ---- */
+    .updates { background: var(--sand); padding: 100px 64px; }
+
+    .updates-header {
+      display: grid;
+      grid-template-columns: 530px 1fr;
+      gap: 80px;
+      margin-bottom: 64px;
+      align-items: start;
+    }
+
+    .updates .section-headline { font-size: clamp(38px, 4vw, 58px); }
+
+    .updates-desc {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      padding-top: 10px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .news-card {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      border-color: var(--stone);
+      box-shadow: 0 4px 16px rgba(23,60,50,.06);
+    }
+
+    .news-img { height: 205px; flex-shrink: 0; }
+    .news-img.green { background: var(--sage-ph); }
+    .news-img.tan   { background: #b9a990; }
+    .news-img.muted { background: #8ea095; }
+
+    .news-body {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .news-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--clay);
+      margin-bottom: 18px;
+    }
+
+    .news-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--forest);
+      margin-bottom: 14px;
+    }
+
+    .news-date {
+      font-size: 13px;
+      color: var(--stone);
+      flex: 1;
+    }
+
+    .news-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-top: 24px;
+    }
+
+    /* ---- HISTORY ---- */
+    .history {
+      background: var(--cream);
+      padding: 100px 64px;
+      display: grid;
+      grid-template-columns: 590px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .history .section-headline { font-size: clamp(44px, 4.5vw, 64px); margin-bottom: 36px; }
+
+    .history-body {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 44px;
+      max-width: 510px;
+    }
+
+    .history-body strong { font-weight: 600; }
+
+    .history-quote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--stone);
+      border-left: 2px solid var(--rule);
+      padding-left: 20px;
+      margin-bottom: 36px;
+      max-width: 510px;
+    }
+
+    .history-visual {
+      display: grid;
+      grid-template-columns: 1fr 190px;
+      grid-template-rows: 275px 1fr;
+      gap: 16px;
+      height: 740px;
+    }
+
+    .hist-paper {
+      grid-row: 1 / 3;
+      background: #ede8de;
+      border-radius: 4px;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hist-year {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 88px;
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hist-paper-label {
+      font-size: 14px;
+      color: var(--stone);
+      line-height: 1.5;
+    }
+
+    .hist-card {
+      background: var(--sage-ph);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .hist-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 4px;
+    }
+
+    .hist-card-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .hist-card2 { background: #8ea095; }
+
+    /* ---- RESOURCES STRIP ---- */
+    .resources-strip {
+      background: var(--sand);
+      padding: 80px 64px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .resources-strip .section-eyebrow { margin-bottom: 48px; }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .resource-group {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      padding: 28px 24px 32px;
+    }
+
+    .resource-group-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      color: var(--forest);
+      margin-bottom: 20px;
+    }
+
+    .resource-list { list-style: none; }
+
+    .resource-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .resource-list li:last-child { border-bottom: none; }
+
+    .resource-list a {
+      font-size: 14px;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+      line-height: 1.4;
+    }
+
+    .resource-list a:hover { color: var(--forest); }
+
+    .resource-arrow { color: var(--stone); font-size: 13px; flex-shrink: 0; }
+
+    /* ---- EMERGENCY NUMBERS ---- */
+    .emergency {
+      background: var(--cream);
+      padding: 80px 64px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .emergency-card {
+      padding: 24px 0;
+      border-top: 2px solid var(--forest);
+    }
+
+    .emergency-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+      margin-bottom: 8px;
+    }
+
+    .emergency-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 17px;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+
+    .emergency-number {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    /* ---- RESIDENT HUB ---- */
+    .resident-hub {
+      background: var(--forest);
+      padding: 100px 64px;
+      display: grid;
+      grid-template-columns: 570px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .hub-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--sage-lt);
+      margin-bottom: 40px;
+    }
+
+    .hub-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(38px, 4vw, 58px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    .hub-body {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--sage-lt);
+      max-width: 510px;
+      margin-bottom: 48px;
+    }
+
+    .hub-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #fff;
+      color: var(--forest);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      height: 38px;
+      padding: 0 28px;
+      border-radius: 19px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .hub-pill:hover { opacity: 0.88; }
+
+    .hub-right { padding-top: 56px; }
+
+    .hub-list { list-style: none; }
+
+    .hub-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--forest-mid);
+    }
+
+    .hub-list li:first-child { border-top: 1px solid var(--forest-mid); }
+
+    .hub-list a {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .hub-list a:hover { opacity: 0.7; }
+    .hub-arrow { color: var(--sage-lt); font-size: 18px; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--sand);
+      border-top: 1px solid var(--rule);
+      padding: 48px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .footer-logo {
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      color: var(--forest);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      font-size: 12px;
+      color: var(--stone);
+      line-height: 1.4;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--forest); }
+
+    .footer-location {
+      font-size: 11px;
+      color: var(--stone);
+      text-align: right;
+    }
+
+    /* ---- MOBILE ---- */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; height: 72px; }
+      .nav-links { display: none; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-photo {
+        height: 400px;
+        padding: 20px;
+        grid-template-columns: 1fr 100px;
+        grid-template-rows: 1fr 160px;
+        gap: 8px;
+      }
+      .hero-copy { padding: 40px 24px 48px; }
+      .hero-headline { font-size: 44px; }
+      .hero-body { font-size: 17px; }
+      .hero-stats { gap: 28px; }
+
+      section { padding: 64px 24px; }
+      hr.rule { margin: 0 24px; }
+
+      .community { grid-template-columns: 1fr; gap: 24px; }
+
+      .lifestyle { grid-template-columns: 1fr; padding: 64px 24px; }
+      .lifestyle-photo { height: 320px; }
+
+      .quick-access { padding: 64px 24px; }
+      .quick-access-header { grid-template-columns: 1fr; gap: 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+
+      .updates { padding: 64px 24px; }
+      .updates-header { grid-template-columns: 1fr; gap: 20px; }
+      .news-grid { grid-template-columns: 1fr; }
+
+      .history { grid-template-columns: 1fr; padding: 64px 24px; }
+      .history-visual { display: none; }
+
+      .resources-strip { padding: 64px 24px; }
+      .resources-grid { grid-template-columns: 1fr; }
+
+      .emergency { padding: 64px 24px; }
+      .emergency-grid { grid-template-columns: 1fr 1fr; }
+
+      .resident-hub { grid-template-columns: 1fr; padding: 64px 24px; }
+      .hub-right { padding-top: 0; }
+
+      footer { flex-direction: column; align-items: flex-start; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+      .footer-location { text-align: left; }
+    }
+
+    @media (max-width: 500px) {
+      .emergency-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav role="navigation" aria-label="Main">
+    <a class="nav-logo" href="/">Shrevecrest</a>
+    <ul class="nav-links">
+      <li><a href="#community">Community</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#hoa">HOA</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-pill" href="#resident">RESIDENT ACCESS</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-copy">
+      <div>
+        <p class="eyebrow">FALLS CHURCH, VIRGINIA</p>
+        <h1 class="hero-headline" id="hero-heading">A neighborhood<br>with roots.</h1>
+        <p class="hero-body">A small enclave of 42 contemporary homes, shaped by architecture, trees and community since 1971.</p>
+        <a class="text-link" href="#community">Explore Shrevecrest &nbsp;&#8594;</a>
+      </div>
+      <div class="hero-stats">
+        <span class="stat">EST. 1971</span>
+        <span class="stat">42 HOMES</span>
+        <span class="stat">INSIDE THE BELTWAY</span>
+      </div>
+    </div>
+    <div class="hero-photo" aria-hidden="true">
+      <div class="hero-photo-main">
+        <p class="hero-photo-label">NEIGHBORHOOD PHOTOGRAPHY<br>Actual Shrevecrest homes &bull; mature trees &bull; quiet streets</p>
+      </div>
+      <div class="hero-photo-top-right"></div>
+      <div class="hero-photo-bot-right"></div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="community" id="community" aria-labelledby="community-heading">
+    <div>
+      <p class="section-eyebrow">THE COMMUNITY</p>
+      <h2 class="section-headline" id="community-heading">Quietly connected.</h2>
+    </div>
+    <p class="community-body">
+      <strong>Shrevecrest</strong> sits between Vienna and Falls Church, adjacent to Idylwood Park and the W&amp;OD Trail. It is close to Tysons and major commuter routes, yet feels distinctly tucked away.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- LIFESTYLE -->
+  <div class="lifestyle">
+    <div class="lifestyle-photo" aria-hidden="true">
+      <div class="lifestyle-photo-inner">
+        <p class="hero-photo-label">W&amp;OD TRAIL / IDYLWOOD PARK<br>Photography placeholder</p>
+      </div>
+    </div>
+    <div>
+      <h2 class="lifestyle-headline">Close to everything.<br>Tucked away from it all.</h2>
+      <p class="lifestyle-body">The W&amp;OD Trail runs along the south side of the community, while Idylwood Park sits directly to the east. Both are minutes from the front door.</p>
+      <div class="amenity-grid">
+        <div class="amenity">W&amp;OD TRAIL</div>
+        <div class="amenity">TYSONS CORNER</div>
+        <div class="amenity">IDYLWOOD PARK</div>
+        <div class="amenity">I-66 / BELTWAY</div>
+        <div class="amenity">FALLS CHURCH</div>
+        <div class="amenity">LEESBURG PIKE</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- QUICK ACCESS -->
+  <section class="quick-access" id="resources" aria-labelledby="qa-heading">
+    <div class="quick-access-header">
+      <div>
+        <p class="section-eyebrow">USEFUL, WITHOUT THE CLUTTER</p>
+        <h2 class="section-headline" id="qa-heading">Everything residents need, within reach.</h2>
+      </div>
+      <p class="quick-access-desc">A single, organized entry point to community information, so residents spend less time searching and more time living here.</p>
+    </div>
+    <div class="cards-grid">
+      <a class="quick-card" href="#updates">
+        <span class="card-num">01</span>
+        <p class="card-title">Community News</p>
+        <p class="card-desc">Updates, notices and neighborhood announcements.</p>
+        <span class="card-arrow">Read updates &#8594;</span>
+      </a>
+      <a class="quick-card" href="#resident">
+        <span class="card-num">02</span>
+        <p class="card-title">Documents &amp; Resources</p>
+        <p class="card-desc">Governing documents, forms and practical information.</p>
+        <span class="card-arrow">View documents &#8594;</span>
+      </a>
+      <a class="quick-card" href="#updates">
+        <span class="card-num">03</span>
+        <p class="card-title">Events</p>
+        <p class="card-desc">Meetings, cleanups and community gatherings.</p>
+        <span class="card-arrow">See calendar &#8594;</span>
+      </a>
+      <a class="quick-card" href="#hoa" id="hoa">
+        <span class="card-num">04</span>
+        <p class="card-title">HOA &amp; Board</p>
+        <p class="card-desc">Governance, contacts and association information.</p>
+        <span class="card-arrow">Learn more &#8594;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- COMMUNITY UPDATES -->
+  <section class="updates" id="updates" aria-labelledby="updates-heading">
+    <div class="updates-header">
+      <div>
+        <p class="section-eyebrow">COMMUNITY UPDATES</p>
+        <h2 class="section-headline" id="updates-heading">What's happening in Shrevecrest.</h2>
+      </div>
+      <p class="updates-desc">A clean, scannable layer for everyday HOA communication. Announcements, event notices and board updates, all in one place.</p>
+    </div>
+    <div class="news-grid">
+      <a class="news-card" href="#">
+        <div class="news-img green" aria-hidden="true"></div>
+        <div class="news-body">
+          <p class="news-tag">ANNUAL MEETING</p>
+          <h3 class="news-title">Neighborhood meeting</h3>
+          <p class="news-date">September 18, 2026</p>
+          <span class="news-arrow">Read more &#8594;</span>
+        </div>
+      </a>
+      <a class="news-card" href="#">
+        <div class="news-img tan" aria-hidden="true"></div>
+        <div class="news-body">
+          <p class="news-tag">COMMUNITY</p>
+          <h3 class="news-title">Fall cleanup</h3>
+          <p class="news-date">October 12, 2026</p>
+          <span class="news-arrow">Read more &#8594;</span>
+        </div>
+      </a>
+      <a class="news-card" href="#">
+        <div class="news-img muted" aria-hidden="true"></div>
+        <div class="news-body">
+          <p class="news-tag">BOARD UPDATE</p>
+          <h3 class="news-title">August board notes</h3>
+          <p class="news-date">August 2026</p>
+          <span class="news-arrow">Read more &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="history" id="history" aria-labelledby="history-heading">
+    <div>
+      <p class="section-eyebrow">OUR HISTORY</p>
+      <h2 class="section-headline" id="history-heading">Our story began in 1971.</h2>
+      <p class="history-body">
+        <strong>Shrevecrest</strong> was planned by architect A.G. Mumma and built by R.J.L. Associates as a rare contemporary subdivision in Fairfax County. Forty of the forty-two homes comprised three model types: the Adventure, the Chaparral, and the Dorado, each rotated at varied angles to create visual interest.
+      </p>
+      <blockquote class="history-quote">
+        "Shrevecrest is radiant with serene natural beauty you thought no longer existed in our busy world. The loveliness of peaceful pasturelands, cool green splendor of large trees shading your home and neighborhood streets, the priceless luxury of still summer evenings."
+        <br><br>-- Original 1971 sales brochure
+      </blockquote>
+      <a class="text-link" href="#">Explore the full history &#8594;</a>
+    </div>
+    <div class="history-visual" aria-hidden="true">
+      <div class="hist-paper">
+        <p class="hist-year">1971</p>
+        <p class="hist-paper-label">Original sales brochure &amp; home model imagery<br><br>Written by Larry Steinberg</p>
+      </div>
+      <div class="hist-card">
+        <p class="hist-card-label">HOME MODELS</p>
+        <p class="hist-card-name">A / C / D</p>
+      </div>
+      <div class="hist-card hist-card2">
+        <p class="hist-card-label">ARCHITECTURE</p>
+        <p class="hist-card-name">A.G. MUMMA</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY RESOURCES -->
+  <div class="resources-strip" aria-labelledby="resources-heading">
+    <p class="section-eyebrow" id="resources-heading">COMMUNITY RESOURCES</p>
+    <div class="resources-grid">
+      <div class="resource-group">
+        <h3 class="resource-group-title">Government</h3>
+        <ul class="resource-list">
+          <li>
+            <a href="http://www.fairfaxcounty.gov/" target="_blank" rel="noopener">Fairfax County</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.fallschurchva.gov/" target="_blank" rel="noopener">Falls Church City</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.fairfaxcounty.gov/dta/real-estate-assessments.htm" target="_blank" rel="noopener">Real Estate Tax Administration</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.fairfaxcounty.gov/providence/" target="_blank" rel="noopener">Providence District Supervisor</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+        </ul>
+      </div>
+      <div class="resource-group">
+        <h3 class="resource-group-title">Utilities &amp; Services</h3>
+        <ul class="resource-list">
+          <li>
+            <a href="https://specialpickup.fairfaxcounty.gov/" target="_blank" rel="noopener">Trash &amp; Special Pickup</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="https://www.dom.com/storm-center/dominion-electric-outage-map.jsp" target="_blank" rel="noopener">Dominion Power Outage Map</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.fallschurchva.gov/content/government/departments/publicutilities/aboutus/default.aspx" target="_blank" rel="noopener">Falls Church Water Authority</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.trafficland.com/city/WAS/index.html" target="_blank" rel="noopener">Virginia 511 Traffic Info</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+        </ul>
+      </div>
+      <div class="resource-group">
+        <h3 class="resource-group-title">Recreation &amp; Local</h3>
+        <ul class="resource-list">
+          <li>
+            <a href="https://fallswood-fc.org/uploads/Idylwood_Park.pdf" target="_blank" rel="noopener">Idylwood Park Map</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.wodfriends.org/" target="_blank" rel="noopener">Friends of the W&amp;OD Trail</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.fallschurchva.gov/content/government/departments/recparks/farmersmarket/" target="_blank" rel="noopener">Falls Church Farmers Market</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+          <li>
+            <a href="http://www.fairfaxcounty.gov/parks/wp-farm-mkt.htm" target="_blank" rel="noopener">Fairfax County Farmers Market</a>
+            <span class="resource-arrow">&#8599;</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMERGENCY NUMBERS -->
+  <div class="emergency" aria-labelledby="emergency-heading">
+    <p class="section-eyebrow" id="emergency-heading">IMPORTANT NUMBERS</p>
+    <div class="emergency-grid">
+      <div class="emergency-card">
+        <p class="emergency-label">EMERGENCY</p>
+        <p class="emergency-name">Police / Fire / Ambulance</p>
+        <p class="emergency-number">911</p>
+      </div>
+      <div class="emergency-card">
+        <p class="emergency-label">NON-EMERGENCY POLICE</p>
+        <p class="emergency-name">Fairfax County Police</p>
+        <p class="emergency-number">703-691-2131</p>
+      </div>
+      <div class="emergency-card">
+        <p class="emergency-label">CRISIS LINE</p>
+        <p class="emergency-name">CrisisLink</p>
+        <p class="emergency-number">703-527-4077</p>
+      </div>
+      <div class="emergency-card">
+        <p class="emergency-label">POWER OUTAGE</p>
+        <p class="emergency-name">Dominion Power</p>
+        <p class="emergency-number">1-888-667-3000</p>
+      </div>
+      <div class="emergency-card">
+        <p class="emergency-label">FAIRFAX COUNTY MAIN</p>
+        <p class="emergency-name">County Services</p>
+        <p class="emergency-number">703-324-7329</p>
+      </div>
+      <div class="emergency-card">
+        <p class="emergency-label">COUNTY EMERGENCY LINE</p>
+        <p class="emergency-name">Inclement Weather / Closures</p>
+        <p class="emergency-number">703-817-7771</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESIDENT HUB -->
+  <section class="resident-hub" id="resident" aria-labelledby="hub-heading">
+    <div>
+      <p class="hub-eyebrow">RESIDENT HUB</p>
+      <h2 class="hub-headline" id="hub-heading">Everything you need, in one place.</h2>
+      <p class="hub-body">
+        A simple, secure home for documents and resident-only information, without forcing public visitors through a separate HOA portal experience. Request access via email to get your credentials.
+      </p>
+      <a class="hub-pill" href="mailto:admin@fallswood-fc.org">REQUEST RESIDENT ACCESS</a>
+    </div>
+    <div class="hub-right">
+      <ul class="hub-list" role="list">
+        <li>
+          <a href="#resident">Architectural Guidelines</a>
+          <span class="hub-arrow" aria-hidden="true">&#8594;</span>
+        </li>
+        <li>
+          <a href="#resident">HOA Documents</a>
+          <span class="hub-arrow" aria-hidden="true">&#8594;</span>
+        </li>
+        <li>
+          <a href="#resident">Resale Information</a>
+          <span class="hub-arrow" aria-hidden="true">&#8594;</span>
+        </li>
+        <li>
+          <a href="#resident">Forms &amp; Requests</a>
+          <span class="hub-arrow" aria-hidden="true">&#8594;</span>
+        </li>
+        <li>
+          <a href="#resident">Community Directory</a>
+          <span class="hub-arrow" aria-hidden="true">&#8594;</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div>
+      <p class="footer-logo">Shrevecrest</p>
+      <p class="footer-sub">Home of the Shrevecrest Homeowners Association<br>Falls Church, Virginia</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#community">Community</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#hoa">HOA</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-location">Falls Church, Virginia</p>
+  </footer>
+
+</body>
+</html>
